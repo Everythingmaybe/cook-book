@@ -2,11 +2,17 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const App: React.FC = () => {
+export interface AppProps {
+  loading: boolean;
+  setConfig: (status: boolean) => undefined;
+}
+
+const App: React.FC<AppProps> = (props: AppProps) => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        { props.loading && <img src={logo} className="App-logo" alt="logo" /> }
+        <button onClick={() => props.setConfig(!props.loading)}> SHOW/HIDE </button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
