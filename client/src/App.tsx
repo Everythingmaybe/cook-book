@@ -1,10 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ActionType } from 'typesafe-actions';
+import * as actions from './store/actions/config.actions';
+import Button from './components/elements/Button';
+
+type Action = ActionType<typeof actions>;
 
 export interface AppProps {
   loading: boolean;
-  setConfig: (status: boolean) => undefined;
+  setConfig: (status: boolean) => Action;
 }
 
 const App: React.FC<AppProps> = (props: AppProps) => {
@@ -24,6 +29,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         >
           Learn React
         </a>
+        <Button active={false}/>
       </header>
     </div>
   );
